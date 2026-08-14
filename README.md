@@ -1,223 +1,63 @@
 # Mini C++ Compiler
 
-## Overview
-
-Mini C++ Compiler is a Python Tkinter based educational compiler project
-that performs:
-
--   Lexical Analysis
--   Syntax Analysis
--   Semantic Analysis
--   Symbol Table Generation
--   Dark/Light Theme Switching
--   Undo/Redo Support
-
-This project is designed for Compiler Construction and Programming
-Language courses.
-
-------------------------------------------------------------------------
+A web-based educational Mini C++ Compiler that performs lexical, syntax, and semantic analysis for a supported subset of C++.
 
 ## Features
 
-### Lexical Analysis
-
--   Identifies keywords
--   Identifies identifiers
--   Identifies operators
--   Identifies separators
--   Identifies literals
-
-### Syntax Analysis
-
-Supports:
-
-``` cpp
-#include<iostream>
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
-    // code
-}
-```
-
-or
-
-``` cpp
-#include<iostream>
-
-int main()
-{
-    std::cout << "Hello";
-}
-```
-
-### Semantic Analysis
-
--   Variable declaration checking
--   Redeclaration detection
--   Undeclared variable detection
--   Type compatibility checking
-
-### Symbol Table
-
-Displays:
-
--   Variable Name
--   Data Type
--   Value
--   Scope
--   Memory Address
-
-------------------------------------------------------------------------
-
-## Supported Statements
-
-### Variable Declarations
-
-``` cpp
-int a;
-int a = 5;
-int a,b,c;
-float x = 5.5;
-```
-
-### Assignments
-
-``` cpp
-a = 10;
-b = a + 5;
-```
-
-### Input
-
-``` cpp
-cin >> a;
-std::cin >> a;
-```
-
-### Output
-
-``` cpp
-cout << a;
-cout << "Hello" << endl;
-
-std::cout << a;
-std::cout << "Hello" << std::endl;
-```
-
-### Return Statement
-
-``` cpp
-return 0;
-```
-
-### Conditions
-
-``` cpp
-if(a > b)
-{
-}
-else
-{
-}
-```
-
-------------------------------------------------------------------------
-
-## Comment Support
-
-Single-line comments are ignored:
-
-``` cpp
-// This is a comment
-
-int a = 5; // Inline comment
-```
-
-------------------------------------------------------------------------
-
-## Requirements
-
--   Python 3.10+
--   Tkinter
-
-------------------------------------------------------------------------
-
-## Installation
-
-### Clone Repository
-
-``` bash
-git clone <repository-url>
-```
-
-### Run Compiler
-
-``` bash
-python mini_cpp_compiler_final.py
-```
-
-or
-
-``` bash
-py mini_cpp_compiler_final.py
-```
-
-------------------------------------------------------------------------
+- Lexical Analysis
+- Syntax Analysis
+- Semantic Analysis
+- Symbol Table Generation
+- Token table with lexeme and token type
+- Syntax and semantic error reporting
+- Variable declaration and redeclaration checking
+- Undeclared variable detection
+- Basic type compatibility checks
+- `std::cout`, `std::cin`, and `using namespace std;` validation
+- Support for common declarations, assignments, loops, conditions, input/output, and return statements
+- Responsive Flask-based web interface
+- Ready for Vercel deployment
 
 ## Project Structure
 
-``` text
-mini_cpp_compiler_final.py
+```text
+app.py
+compiler_core.py
+requirements.txt
 README.md
 ```
 
-------------------------------------------------------------------------
+## Run Locally
 
-## GUI Modules
-
-### Source Code Panel
-
-Used to write C++ code.
-
-### Tokens Tab
-
-Displays lexical tokens.
-
-### Compiler Output Tab
-
-Displays syntax and semantic results.
-
-### Symbol Table Tab
-
-Displays generated symbol table.
-
-------------------------------------------------------------------------
-
-## Sample Program
-
-``` cpp
-#include<iostream>
-using namespace std;
-
-int main()
-{
-    int num1, num2;
-
-    cin >> num1;
-    cin >> num2;
-
-    cout << num1 + num2 << endl;
-
-    return 0;
-}
+```bash
+pip install -r requirements.txt
+python app.py
 ```
 
-------------------------------------------------------------------------
+Then open:
 
-## Author
+```text
+http://127.0.0.1:5000
+```
 
-BS Computer Science Project Mini C++ Compiler using Python and Tkinter
+## Vercel Deployment
+
+Keep `app.py` and `compiler_core.py` in the repository root together with `requirements.txt`.
+
+Push the project to GitHub and import the repository into Vercel. A separate `vercel.json` is not required for a root-level Flask app.
+
+## Important Note
+
+This is an educational mini compiler. It analyzes the C++ subset implemented in the project and does not generate machine code or replace a production C++ compiler such as GCC or Clang.
+
+## Original Project
+
+The original desktop application used Python Tkinter with:
+
+- source-code editor
+- token table
+- compiler output
+- symbol-table tab
+- dark/light theme toggle
+
+The Vercel version replaces the Tkinter desktop interface with a browser-based Flask interface while preserving the compiler-analysis logic.
